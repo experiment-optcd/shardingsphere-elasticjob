@@ -15,44 +15,32 @@
 # limitations under the License.
 #
 
-name: Required - Check
-
-on:
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
-
-concurrency:
-  group: check-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
+name: Modified Required - Check
 jobs:
   check-checkstyle:
-    name: Check - CheckStyle
-    if: github.repository == 'apache/shardingsphere-elasticjob'
+    name: check-checkstyle
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - name: Run CheckStyle
-        run: ./mvnw checkstyle:check -Pcheck -T1C
-
+    - uses: actions/checkout@v3
+    - name: Run CheckStyle
+      run: ./mvnw checkstyle:check -Pcheck -T1C
   check-spotless:
-    name: Check - Spotless
-    if: github.repository == 'apache/shardingsphere-elasticjob'
+    name: check-spotless
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Spotless
-        run: ./mvnw spotless:check -Pcheck -T1C
-
+    - uses: actions/checkout@v3
+    - name: Run Spotless
+      run: ./mvnw spotless:check -Pcheck -T1C
   check-license:
-    name: Check - License
-    if: github.repository == 'apache/shardingsphere-elasticjob'
+    name: check-license
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Apache Rat
-        run: ./mvnw apache-rat:check -Pcheck -T1C
+    - uses: actions/checkout@v3
+    - name: Run Apache Rat
+      run: ./mvnw apache-rat:check -Pcheck -T1C
+'on':
+- push
+- workflow_dispatch
