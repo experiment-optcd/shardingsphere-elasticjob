@@ -22,25 +22,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v3
-    - name: Run CheckStyle
-      run: ./mvnw checkstyle:check -Pcheck -T1C
+      - uses: actions/checkout@v3
+      - name: Run CheckStyle
+        run: ./mvnw checkstyle:check -Pcheck -T1C
   check-spotless:
     name: check-spotless
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v3
-    - name: Run Spotless
-      run: ./mvnw spotless:check -Pcheck -T1C
+      - uses: actions/checkout@v3
+      - name: Run Spotless
+        run: ./mvnw spotless:check -Pcheck -T1C
   check-license:
     name: check-license
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v3
-    - name: Run Apache Rat
-      run: ./mvnw apache-rat:check -Pcheck -T1C
+      - uses: actions/checkout@v3
+      - name: Run Apache Rat
+        run: ./mvnw apache-rat:check -Pcheck -T1C
 'on':
-- push
-- workflow_dispatch
+  - push
+  - workflow_dispatch
